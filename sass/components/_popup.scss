@@ -1,0 +1,26 @@
+.popup{
+
+    //display: none; //testing
+    display: none;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    height: 100vh;
+    width: 100%;
+
+    background-color: rgba($color-black, 0.9);
+    z-index: 1000; 
+
+    &__content{
+
+        //display: none;
+        @include absCenter;
+
+        height: 50rem;
+        width: 75%;
+        background-color: $color-white;
+        border-radius: 3px;
+    }
+}

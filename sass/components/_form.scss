@@ -1,0 +1,134 @@
+.form{
+
+    &__group:not(:last-child) {
+        margin-bottom: 2rem;
+    }
+
+    &__input {
+        width: 65%;
+        display: block;
+        font-size: 1.5rem;
+
+        //because forms have their own font and color, we need tell that it should be inherited
+        font-family: inherit;
+        color: inherit;
+
+        padding: 1.5rem 2rem;
+        border-radius: 2px;
+        background-color: rgba($color-white, 0.5);
+        border: none;
+
+        //this will add animation when it's focused. (border color will change)
+        transition: all 0.5s;
+
+        //we need this because when the form is selected, it add 3px border on the bottom which will cause a
+        // shift down. To avoid it, put this border from start and make it invisible. 
+        border-bottom: 3px solid transparent;
+
+        &:focus {
+            outline: none;
+    
+            box-shadow: 0 2rem 2rem rgba($color-black, 0.2);
+            border-bottom: 3px solid $color-primary;
+        }
+
+        //this targets focused input field when the field is not valid!!!!!
+        &:focus:invalid {
+            border-bottom: 3px solid $color-secondary-dark;
+        }
+
+        //this is to style placeholder in our form
+        &::-webkit-input-placeholder {
+        color: #999;
+        }
+    }
+
+    &__label {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-left: 2rem;
+        margin-top: 0.7rem;
+        display: block;
+        transition: all 0.3s;
+    }
+
+    // + is a selector which selects next sibling (not a child but a brother (element on the same level))
+    // ~ is a selector which selects all siblings.
+    //in our case, we have only 1 sibling, so we gonna use + 
+
+    //placeholder-shown means that we didn't write anything yet in the input field.
+    &__input:placeholder-shown + &__label {
+        //opacity just hides element but it's still on a page.
+        opacity: 0;
+
+        //visibility, on the other hand, hides element AND it's not on a page. Also, we can't animate visibility, that's why we use opacity.
+        visibility: hidden;
+
+        transform: translateY(-4rem);
+    }
+
+    &__radio-group {
+        display: inline-block;
+        width: 40%;
+    }
+
+    //we are hiding those radio buttons because we are creating out custom ones
+    &__radio-input {
+        display: none;
+    }
+
+    &__radio-label {
+        font-size: 1.6rem;
+        cursor: pointer;
+        padding-left: 4rem;
+
+        //because it's a parent of radio-button that has postion: absolute;
+        position: relative;
+    }
+
+    //this is for the border around our custom radio button. It's has a circle shape and it's empty inside
+    &__radio-button {
+        display: inline-block;
+        position: absolute;
+        top: -0.8rem;
+        left: 0;
+
+        height: 2.3rem;
+        width: 2.3rem;
+        border: 5px solid $color-primary;
+        border-radius: 50%;
+
+        //this is for the circle inside. if the ratio button was selected, it will appear. By default, it hidden
+        &::after{
+            //because we want this inner circle right inside the radio-button, we need to use possition: absolute;
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            content: "";
+            height: 1.5rem;
+            width: 1.5rem;
+            border-radius: 50%;
+            background-color: $color-primary;
+            opacity: 0; 
+
+            //this is for complex selector below
+            transition: opacity 0.2s;
+        }
+    }
+
+    //in order to display the inner circle depending on whether ratio button was selected or not, we need to do the following:
+
+    // 1st selector: all radio buttons that are CHECKED (it's gonna be just 1 out of 2 in our case). 
+    //            This is original ratio button class and this button was hidden.
+    // + or ~ find all siblings (in our case it's just 1)
+    // 2nd selector: form__radio-label is selected.
+    // 3rd selector: form__radio-button, which is the direct child of of form__radio-label.
+    // we want after in order to match what we wrote above, but changing opacity to 1;
+
+    &__radio-input:CHECKED + &__radio-label &__radio-button::after {
+        opacity: 1;
+    }
+}

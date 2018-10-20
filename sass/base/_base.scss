@@ -1,0 +1,21 @@
+/*------------------------------------------------------------------------------------------------------------
+
+                            GLOBAL 
+
+------------------------------------------------------------------------------------------------------------*/
+*,
+*::before,
+*::after {
+    padding: 0; /* (inside) between content and border*/
+    margin: 0;  /* (outside) between different elements */
+    box-sizing: inherit; /* borders and paddings are no longer added to the total width or height that we specify */
+}
+
+html{
+    //This defines what 1rem is
+    font-size: 62.5%;
+}
+
+body{
+    padding: 3rem;
+}

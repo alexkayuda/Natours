@@ -1,0 +1,108 @@
+/*------------------------------------------------------------------------------------------------------------
+
+                            ALL BUTTONS
+
+------------------------------------------------------------------------------------------------------------*/
+.btn{
+
+    &,      //this ensures that same styling can be applied to <button> elements
+    &:link, //this means that it will apply only for <a link="#"></a> elements
+    &:visited{
+        /*  Difference between block and inline-block can be found here
+        https://stackoverflow.com/questions/9189810/css-display-inline-vs-inline-block
+        */
+        display: inline-block; /* Also, inline-block is NOT a block. Can be treated as a simple text*/
+        text-decoration: none;
+        text-transform: uppercase;
+        padding: 1.5rem  4rem;
+        border-radius: 10rem;
+        transition: all 0.1s;   /* all means hover and active*/
+        position: relative;
+        font-size: 1rem;
+
+        border:none;
+        cursor: pointer;
+    }
+    &:hover {
+        transform: translateY(-3px);
+
+        /*shadow x-axis -> y-axis, blurriness, and color*/
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.5);
+
+        &::after{
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+    }
+    &:active,
+    &:focus { //this is for buttons
+
+        outline: none; //this is for buttons
+        
+        transform: translateY(-1px);
+        /*shadow x-axis -> y-axis, blurriness, and color*/
+        box-shadow: 0 0.5rem 1rem rgba($color-black, 0.5);
+    }
+
+    &--white{
+        background-color: $color-white;
+        color: $color-grey-dark;
+
+        &::after{
+            background-color: $color-white;
+        }
+    }
+
+    &--green{
+        background-color: $color-primary;
+        color: $color-white;
+
+        &::after{
+            background-color: $color-white;
+        }
+    }
+
+    &::after{
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all .5sec; 
+    }
+
+    &--animated{
+        animation: moveInTop 1.5s ease-out 0.75s;
+        animation-fill-mode: backwards; /* will apply animation BEFORE displaying actual button*/
+    }
+}
+
+
+.btn-text{
+    &:link,
+    &:visited{
+        font-size: 1.6rem;
+        color: $color-primary;
+        display: inline-block;
+        text-decoration: none;
+        border-bottom: 1px solid $color-primary;
+        padding: 3px;
+        transition: all 0.2s;
+    }
+
+    &:hover{
+        background-color: $color-primary;
+        color: $color-white;
+        box-shadow: 0 1rem 2rem rgba($color-black, .15);
+        transform: translateY(-2px);
+    }
+
+    &:active{
+        box-shadow: 0 1rem 2rem rgba($color-black, .15);
+        transform: translateY(0);
+    }
+}

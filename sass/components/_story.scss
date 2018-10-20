@@ -1,0 +1,93 @@
+.story{
+    width: 75%;
+    //because it's an element inside another element
+    margin: 0 auto;
+    -webkit-box-shadow: 0 3rem 6rem rgba($color-black, 0.1);
+            box-shadow: 0 3rem 6rem rgba($color-black, 0.1);
+
+    //make each comment a bit invisible so we can see the video behind it
+    background-color: rgba($color-white, 0.6);
+    border-radius: 3px;
+    padding: 6rem;
+    padding-left: 9rem;
+    font-size: 1.6rem;
+
+    //this is to rotate the entire thing to the right.
+    transform: skewX(-12deg);
+
+//     apply those properties for all direct children (In this case it is story__shape && story__text)
+//    & > * {
+//         this is to rotate the entire thing to the left in order to make it look straight 
+//         HOWEVER, this wont work becase &__shape is already has transform property and, by precidence, it will take over
+//         so, this property wont be applied. Instead, apply the following property to every element manually
+//        transform: skewX(12deg);
+//    }
+
+    &__shape{
+        //because caption has an absolute property
+        position: relative;
+
+        width: 15rem;
+        height: 15rem;
+        //background-color: aqua;
+        float: left;
+
+        //This is to round the text as if it follows the circle.
+        //requires: width, height, and float left
+        -webkit-shape-outside: circle(50% at 50% 50%);
+        shape-outside: circle(50% at 50% 50%);
+
+        //to create a circle look
+        -webkit-clip-path: circle(50% at 50% 50%);
+                clip-path: circle(50% at 50% 50%);
+
+        //to shift it to the right a bit and rotate it in order to make it look straight
+        -webkit-transform: translateX(-3rem) skewX(12deg);;
+                transform: translateX(-3rem) skewX(12deg);;
+    }
+
+    &__img{
+        height: 100%;
+        
+        //because img is not properly centered, we need to move it a bit to the left.
+        transform: translateX(-4rem) scale(1.2);
+        
+        transition: all 0.5s;
+    }
+
+    &__text{
+        //transform: skewX(12deg);
+    }
+
+    &__caption {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        //usually, it should be -50%, -50% in order to center it. However, in this case, we want to
+        //  move it a bit down to add an effect of rising up. that's why we need to change the Y-axis (20%)
+        transform: translate(-50%, 20%);
+
+        color: $color-white;
+        text-transform: uppercase;
+        font-size: 1.7rem;
+        text-align: center;
+
+        //initially, opacity is 0. we only want it appear when we hover the image
+        opacity: 0;
+
+        transition: all 0.5s;
+        backface-visibility: hidden;
+    }
+
+    &:hover &__caption {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+
+    &:hover &__img{
+        transform: translateX(-4rem) scale(1);
+
+        //to make the img a bit darker and blur when we hover it
+        filter: blur(3px) brightness(80%)
+    }
+}

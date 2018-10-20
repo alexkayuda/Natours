@@ -1,0 +1,55 @@
+
+
+/*------------------------------------------------------------------------------------------------------------
+
+                            HEADER - ANIMATIONS
+
+------------------------------------------------------------------------------------------------------------*/
+@keyframes moveInLeft{
+    0%{ /* this is a starting point. Where do we what out animation to start from ??? */
+        opacity: 0;
+        transform: translateX(-100px); /* Initial position of our animation is -100px from the oroginal point (center in our case)*/
+    }
+
+    70%{ /*Intermediate state. We can have as many breaks like this as we want*/
+        transform: translateX(15px);
+    }
+
+    100%{
+        opacity: 1;
+        transform: translate(0); /*That were we want it to be. */
+    }
+
+}
+
+@keyframes moveInRight{
+    0%{
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    70%{
+        transform: translateX(-15px);
+    }
+
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInTop{
+    0%{
+        opacity: 0;
+        transform: translateY(100px);
+    }
+
+    70%{
+        transform: translateY(-15px);
+    }
+
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
+}

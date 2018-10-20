@@ -1,0 +1,49 @@
+/*------------------------------------------------------------------------------------------------------------
+
+                            HEADER
+
+------------------------------------------------------------------------------------------------------------*/
+.header{
+
+    /* 1vh = 1% of viewport height. Resizing the height of the browser window 
+    will cause the change in height. */
+    height: 95vh; 
+
+    position: relative;
+
+    /*Gradient will be on top of our background image. It also will go from top left corner to the bottom right corner
+    Also change the opacity (0.8 in our case) so that our background image can be seen*/
+    background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)), url(../img/hero.jpg);
+
+    /* this will always fit the background image to the current viewport*/
+    background-size: cover; //cover === 100%
+
+    /*this will not crop the image on top. top stays fixed even when resizing the window*/
+    background-position: top;
+    
+    /*To crop the image use advanced css property
+    polygon has 4 coordinates: starts at top left corner -> top right corner -> bottom right -> bottom left*/
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+    &__logo--box{
+        /* when using absolute - set parent's position to relative */
+        position: absolute;
+        top: 4rem;
+        left: 4rem;
+    }
+    
+    &__logo{
+        height: 3.5rem;
+        //width: auto;
+    }
+
+    &__text--box{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+    
+        /*This is VERY IMPORTANT! This property will center elements relatively*/
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+}

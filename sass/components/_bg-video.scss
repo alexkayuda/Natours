@@ -1,0 +1,25 @@
+.bg-video{
+    opacity: 0.2;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    widows: 100%;
+
+    //because video will take all the width of the entire page, 
+    //we need to restrict it to what we defined before. (We want to maintain white space on the right and on the left)
+    overflow: hidden;
+    
+    //we need this in order to h3 and button elements to be shown.
+    //Means that this video will be behind all elements; by default z-index is 0 or 1 ???
+    z-index: -1;
+
+    &__content{
+        height: 100%;
+        width: 100%;
+
+        //(similar to background-size: cover) works for videos. Keeps proper ratio.
+        object-fit: cover;
+    }
+}

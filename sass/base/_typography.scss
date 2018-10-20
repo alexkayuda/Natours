@@ -1,0 +1,75 @@
+
+
+body{
+    /* Font Properties */
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    //font-size: 16px;
+    line-height: 1.7;
+    color: $color-grey-dark;
+}
+
+.heading-primary{
+    color: $color-white;
+    text-transform: uppercase;
+    margin-bottom: 6rem;
+
+    /* if any problem with anymation - (shaking or smth else)*/
+    backface-visibility: hidden;
+
+    &--main{
+        display: block;
+        font-size: 4rem;
+        font-weight: 400;
+        letter-spacing: 3.5rem;
+    
+        animation: moveInLeft 1.5s ease-out;    /*ease-out -> see below*/
+        /* 3 MAIN properties that define every animation
+        animation-name: moveInLeft;
+        animation-duration: 1.5s;
+        animation-timing-function: ease-out;
+        */
+    
+        /* ADDITIONAL properties that can be used */
+        /* animation-delay: 3s; /* animation starts AFTER 3 seconds */
+        /* animation-iteration-count: 3; /* animation repeats 3 times */
+        /* animation-timing-function: ease-out; /* ease-in -> animation starts slower and ends faster
+                                                ease-out -> animation starts faster and ends slower. */
+    }
+    
+    &--sub{
+        display: block;
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 1.75rem;
+    
+        /*See example above*/
+        animation: moveInRight 1.5s ease-out;
+    }
+}
+
+.heading-secondary{
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+
+    //to style h2 element
+    background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+    display: inline-block;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.heading-tertiary{
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.paragraph{
+    font-size: 1.6rem;
+    
+    &:not(:last-child){
+        margin-bottom: 3rem;
+    }
+}

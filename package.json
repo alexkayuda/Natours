@@ -1,0 +1,14 @@
+{
+  "name": "proj1_natours",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass" : "node-sass sass/main.scss css/style.css -w"
+  },
+  "author": "Alexander Kayuda",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^4.9.0"
+  }
+}
